@@ -8,10 +8,15 @@ import java.util.function.BiFunction;
 
 public enum OperationType {
 
-    ADDITION("+", 1, (a, b) -> a + b),
+    ADDITION("+", 1, Double::sum),
     SUBTRACTION("-", 1, (a, b) -> a - b),
     MULTIPLICATION("*", 2, (a, b) -> a * b),
-    DIVISTION("/", 2, (a, b) -> a / b);
+    DIVISION("/", 2, (a, b) -> {
+        if (b == 0) {
+            throw new ArithmeticException("division by zero");
+        }
+        return a / b;
+    });
 
 
     private static final Map<String, OperationType> ENUM_OPERATION;
