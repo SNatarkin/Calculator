@@ -15,7 +15,7 @@ public enum OperationType {
 
 
     private static final Map<String, OperationType> ENUM_OPERATION;
-    private static final String  OPERATORS;
+    private static final String OPERATORS;
 
     static {
         Map<String, OperationType> map = new ConcurrentHashMap<>();
@@ -31,29 +31,33 @@ public enum OperationType {
 
     private final String operand;
     private final int priority;
-    private final BiFunction<Integer, Integer, Integer> function;
+    private final BiFunction<Double, Double, Double> function;
 
 
-    OperationType(String operand, int priority, BiFunction<Integer, Integer, Integer> function) {
+    OperationType(String operand, int priority, BiFunction<Double, Double, Double> function) {
         this.operand = operand;
         this.priority = priority;
         this.function = function;
     }
 
-    public static OperationType getOperand(Character operand) {
+    public static OperationType getOperand(String operand) {
         return ENUM_OPERATION.get(operand);
     }
-    public static int getPriority(String operand){
+
+    public static int getPriority(String operand) {
         return ENUM_OPERATION.get(operand).priority;
     }
-    public BiFunction<Integer, Integer, Integer> getFunction() {
-        return function;
-    }
-    public static boolean IsOperator(String operand){
+
+    public static boolean IsOperator(String operand) {
         return ENUM_OPERATION.containsKey(operand);
     }
-    public static String getOperators(){
+
+    public static String getOperators() {
         return OPERATORS;
+    }
+
+    public BiFunction<Double, Double, Double> getFunction() {
+        return function;
     }
 
 }

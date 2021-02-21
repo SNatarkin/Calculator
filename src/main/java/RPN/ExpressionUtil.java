@@ -3,11 +3,11 @@ package RPN;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
-public class ExpressionUtil implements ArgrumentController {
+public class ExpressionUtil implements ArgumentController {
 
     @Override
     public boolean check(String input) {
-        return isLetter(input) & isWhitespace(input) & checkOperand(input);
+        return isLetter(input) & isWhitespace(input) & checkPlaceOperands(input) & checkOperands(input);
     }
 
 
@@ -27,29 +27,34 @@ public class ExpressionUtil implements ArgrumentController {
         return true;
     }
 
-    private boolean checkOperand(String input) {
+    private boolean checkOperands(String input) {
         String operands = input.replaceAll("[0-9.]", "");
-        if ((Character.isDigit(input.charAt(0)) && Character.isDigit(input.charAt(input.length() - 1)))) {
-            for (int i = 0; i < operands.length(); i++) {
-                if (OperationType.IsOperator(String.valueOf(operands.charAt(i)))) {
-                } else {
-                    throw new IllegalArgumentException("The operand you entered does not exist");
-                }
+        for (int i = 0; i < operands.length(); i++) {
+            if (OperationType.IsOperator(String.valueOf(operands.charAt(i)))) {
+            } else {
+                throw new IllegalArgumentException("The operand you entered does not exist");
             }
-            Object[] digits = Arrays.stream(input.trim().split("[" + Pattern.quote(OperationType.getOperators()) + "]")).
-                    filter(s -> !s.equals("")).
-                    map(s -> s.trim()).toArray();
-            if (digits.length - operands.length() != 1) {
-                throw new IllegalArgumentException("The number of operands cannot be equal to or greater than the number of digits");
-            }
-
-        } else {
-            throw new IllegalArgumentException("Expression cannot start or end with an operand");
-
         }
+        if (getNumbers(input).length - operands.length() != 1) {
+            throw new IllegalArgumentException("The number of operands cannot be equal to or greater than the number of digits");
+        }
+
+
         return true;
 
     }
 
+    private boolean checkPlaceOperands(String input) {
+        if ((Character.isDigit(input.charAt(0)) && Character.isDigit(input.charAt(input.length() - 1)))) {
+            return true;
+        } else throw new IllegalArgumentException("Expression cannot start or end with an operand");
+    }
+
+    private String[] getNumbers(String input) {
+        Object[] arrayInput = Arrays.stream(input.trim().split("[" + Pattern.quote(OperationType.getOperators()) + "]")).
+                filter(s -> !s.equals("")).
+                map(s -> s.trim()).toArray();
+        return Arrays.copyOf(arrayInput, arrayInput.length, String[].class);
+    }
 
 }

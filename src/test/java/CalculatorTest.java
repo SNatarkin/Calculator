@@ -1,16 +1,14 @@
-import RPN.ArgrumentController;
+import RPN.ArgumentController;
+import RPN.Converter;
 import RPN.ExpressionUtil;
 import RPN.PostfixConverter;
-import RPN.Converter;
 import org.junit.Test;
-
-
 
 import static org.junit.Assert.assertEquals;
 
 public class CalculatorTest {
 
-    private ArgrumentController checkInput = new ExpressionUtil();
+    private final ArgumentController checkInput = new ExpressionUtil();
 
 
     @Test
@@ -28,37 +26,41 @@ public class CalculatorTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void testСheckForLetters(){
+    public void testСheckForLetters() {
         checkInput.check("A2.1+1.9-3*2-4+5*10-35");
         checkInput.check("A2.1+1.9-3*2-4+5*10(-35");
         checkInput.check("2.1+1.9-3*2-4С+5*10-35");
     }
+
     @Test(expected = RuntimeException.class)
-    public void testCheckWhiteSpace(){
+    public void testCheckWhiteSpace() {
         checkInput.check("1+ 1.9-3*2-4+5*10-35");
         checkInput.check(" 1+1.9-3*2-4+5*10-35");
         checkInput.check("1+ 1.9-3*2-4+5*10-35 ");
     }
+
     @Test(expected = RuntimeException.class)
-    public void testDuplicateOperand(){
+    public void testDuplicateOperand() {
         checkInput.check("2.1++1.9-3*2-4+5*10-35");
         checkInput.check("2.1++1.9-3*2-4+5*10-35");
         checkInput.check("2.1++1.9-3**2-4+5*10-35");
         checkInput.check("2.1+1.9-3*2--4+5*10-35");
     }
+
     @Test(expected = RuntimeException.class)
-    public void operandAtTheBeginningOrAtTheEnd(){
+    public void operandAtTheBeginningOrAtTheEnd() {
         checkInput.check("+2.1+1.9-3*2-4+5*10-35");
         checkInput.check("2.1+1.9-3*2-4+5*10-35+");
         checkInput.check("2.1+1.9-3*2-4+5*10-35*");
         checkInput.check("*2.1+1.9-3*2-4+5*10-35");
     }
+
     @Test(expected = RuntimeException.class)
-   public void notSupportedOperand(){
+    public void notSupportedOperand() {
         checkInput.check("2^2");
         checkInput.check("2%2");
         checkInput.check("2*2^9");
     }
-    }
+}
 
 
