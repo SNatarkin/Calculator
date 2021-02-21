@@ -14,8 +14,8 @@ public class Converter implements PostfixConverter {
             } else {
                 copyInput.append(" ");
                 if (operStack.size() > 0) {
-                    while ( !operStack.isEmpty() && OperationType.getPriority(String.valueOf(input.charAt(i))) <= OperationType.getPriority(operStack.peek())) {
-                        copyInput.append(operStack.pop()+ " ");
+                    while (!operStack.isEmpty() && OperationType.getPriority(String.valueOf(input.charAt(i))) <= OperationType.getPriority(operStack.peek())) {
+                        copyInput.append(operStack.pop() + " ");
                     }
                 }
                 operStack.push(String.valueOf(input.charAt(i)));
@@ -23,7 +23,7 @@ public class Converter implements PostfixConverter {
             }
         }
         while (!operStack.isEmpty())
-            copyInput.append(" "+ operStack.pop());
+            copyInput.append(" " + operStack.pop());
         return copyInput.toString();
 
 

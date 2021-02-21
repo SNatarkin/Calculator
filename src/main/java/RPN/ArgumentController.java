@@ -1,6 +1,6 @@
 package RPN;
 
-public interface ArgrumentController {
+public interface ArgumentController {
 
     boolean check(String input);
 }
