@@ -1,11 +1,11 @@
-package RPN;
+package rpn;
 
 import java.util.Stack;
 
 public class PostfixConverter implements Converter {
     @Override
     public String convertToPostfix(String input) {
-        StringBuffer copyInput = new StringBuffer();
+        StringBuilder copyInput = new StringBuilder();
         Stack<String> operStack = new Stack<>();
         for (int i = 0; i < input.length(); i++) {
             if (!OperationType.IsOperator(String.valueOf(input.charAt(i)))) {
@@ -14,7 +14,8 @@ public class PostfixConverter implements Converter {
                 copyInput.append(" ");
                 if (operStack.size() > 0) {
                     while (!operStack.isEmpty() && OperationType.getPriority(String.valueOf(input.charAt(i))) <= OperationType.getPriority(operStack.peek())) {
-                        copyInput.append(operStack.pop() + " ");
+                        copyInput.append(operStack.pop());
+                        copyInput.append(" ");
                     }
                 }
                 operStack.push(String.valueOf(input.charAt(i)));
@@ -22,11 +23,13 @@ public class PostfixConverter implements Converter {
             }
         }
         while (!operStack.isEmpty())
-            copyInput.append(" " + operStack.pop());
+            copyInput.append(" ");
+            copyInput.append(operStack.pop());
         return copyInput.toString();
 
 
     }
+
 }
 
 
