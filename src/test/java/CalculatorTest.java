@@ -25,7 +25,7 @@ public class CalculatorTest {
     @Test
     public void testCheckForLetters() {
         assertFalse(checkInput.check("A2.1+1.9-3*2-4+5*10-35"));
-        assertFalse(checkInput.check("A2.1+1.9-3*2-4+5*10(-35"));
+        assertFalse(checkInput.check("A2.1+1.9-3*2-4+5*10-35"));
         assertFalse(checkInput.check("2.1+1.9-3*2-4С+5*10-35"));
     }
 
@@ -65,8 +65,6 @@ public class CalculatorTest {
         assertTrue(calculator.calculate("23434*213+231") == 4991673.0);
         assertTrue(calculator.calculate("12+5+4-4*5-1") == 0.0);
         assertTrue(calculator.calculate("232*2+2-4-3+7") == 466.0);
-
-
     }
 
 
