@@ -1,9 +1,9 @@
-package RPN;
+package rpn;
 
 public interface ICalculator {
     /**
-     * @param input
-     * @return
+     * @param input infix mathematical expression
+     * @return calculation result
      */
     double calculate(String input);
 }
