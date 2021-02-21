@@ -24,7 +24,7 @@ public class EvaluationCalculator implements ICalculator {
         Stack<Double> temp = new Stack<>();
         final List<String> expression = Arrays.asList(input.split(" "));
         expression.forEach(symbol -> {
-            if (!isNumeric(symbol) & !OperationType.IsOperator(symbol)) {
+            if (!(isNumeric(symbol) & !OperationType.IsOperator(symbol))) {
                 throw new IllegalArgumentException(String.format("Lists cannot contain spaces or other characters [%s]", symbol));
             }
             if (isNumeric(symbol)) {
