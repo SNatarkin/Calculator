@@ -1,4 +1,4 @@
-package RPN;
+package rpn;
 
 import java.util.Collections;
 import java.util.Map;
