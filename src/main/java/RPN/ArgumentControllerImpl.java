@@ -7,7 +7,7 @@ public class ArgumentControllerImpl implements IArgumentController {
 
     @Override
     public boolean check(String input) {
-        return isLetter(input) & isWhitespace(input) & checkPlaceOperands(input) & checkOperands(input);
+        return isLetter(input) && isWhitespace(input) && checkPlaceOperands(input) && checkOperands(input);
     }
 
     private boolean isLetter(String input) {
@@ -44,7 +44,7 @@ public class ArgumentControllerImpl implements IArgumentController {
 
     private boolean checkPlaceOperands(String input) {
         if (!(Character.isDigit(input.charAt(0)) && Character.isDigit(input.charAt(input.length() - 1)))) {
-            System.out.println("Expression cannot start or end with an operand or letters");
+            System.out.println("Expression cannot start or end with an operand,only digits");
             return false;
         }
         return true;
