@@ -10,7 +10,7 @@ import java.util.Stack;
 public class EvaluationCalculator implements ICalculator {
 
     private final IArgumentController argumentController;
-    private final PostfixConverter converter;
+    private final Converter converter;
 
     public EvaluationCalculator() {
         this.argumentController = new ArgumentControllerImpl();
