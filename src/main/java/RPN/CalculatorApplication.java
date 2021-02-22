@@ -12,17 +12,17 @@ public class CalculatorApplication {
     }
     void run() {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome to my expression calculator, if you want to end the program enter: exit");
         while (true) {
-            System.out.println("");
+            System.out.println("Enter expression");
             String input = sc.nextLine();
             if (input.equalsIgnoreCase("exit")) {
                 System.out.println("Thanks for using the calculator, goodbye");
                 break;
             }
             try {
-               double result =  calculator.calculate(input);
-                System.out.println("Результат " + result);
-                System.out.println("if you want to end the program enter: exit");
+                double  result = calculator.calculate(input);
+                System.out.println(String.format("%.2f\n" , result));
 
             } catch (ArithmeticException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
