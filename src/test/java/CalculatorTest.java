@@ -1,5 +1,5 @@
 import org.junit.Test;
-import rpn.*;
+import RPN.*;
 
 import static org.junit.Assert.*;
 

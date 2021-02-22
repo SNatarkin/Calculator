@@ -1,4 +1,4 @@
-package rpn;
+package RPN;
 
 import lombok.RequiredArgsConstructor;
 
