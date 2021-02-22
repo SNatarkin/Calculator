@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 public class ArgumentControllerImpl implements IArgumentController {
 
+
+
     @Override
     public boolean check(String input) {
         return isLetter(input) && isWhitespace(input) && checkPlaceOperands(input) && checkOperands(input);
