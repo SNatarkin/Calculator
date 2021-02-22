@@ -57,7 +57,6 @@ public class EvaluationTest {
         when(mockController.check(anyString())).thenReturn(true);
         when(mockConverter.convertToPostfix("1+1")).thenReturn("1 1 +");
         assertEquals(2, calculator.calculate("1+1"), 0.00001);
-        when(mockConverter.convertToPostfix("3+3*3")).thenReturn("3 3 3 * +");
         when(mockConverter.convertToPostfix("5/10+4-3*4")).thenReturn("5 10 / 4 + 3 4 * -");
         assertEquals(-7.5 ,calculator.calculate("5/10+4-3*4") ,0.00001);
 
