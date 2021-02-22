@@ -12,9 +12,13 @@ public class EvaluationCalculator implements ICalculator {
     private final IArgumentController argumentController;
     private final PostfixConverter converter;
 
+    public EvaluationCalculator() {
+        this.argumentController = new ArgumentControllerImpl();
+        this.converter = new PostfixConverter();
+    }
 
     @Override
-    public double calculate(String input) {
+    public double calculate(String input) throws IllegalArgumentException , ArithmeticException{
         if (argumentController.check(input)) {
             return counting(converter.convertToPostfix(input));
         } else throw new IllegalArgumentException("The expression cannot be counted");
