@@ -1,4 +1,4 @@
-package rpn.factory;
+package rpn.factories;
 
 import rpn.calculator.EvaluationCalculator;
 import rpn.calculator.ICalculator;

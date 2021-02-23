@@ -19,7 +19,7 @@ public enum OperationType {
     });
 
     private static final Map<String, OperationType> ENUM_OPERATION;
-    
+
     static {
         Map<String, OperationType> map = new ConcurrentHashMap<>();
         for (OperationType instance : OperationType.values()) {

@@ -2,7 +2,7 @@ package rpn.application;
 
 import lombok.RequiredArgsConstructor;
 import rpn.calculator.ICalculator;
-import rpn.factory.RpnFactory;
+import rpn.factories.RpnFactory;
 
 import java.util.Scanner;
 
