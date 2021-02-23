@@ -18,7 +18,6 @@ public enum OperationType {
         return a / b;
     });
 
-
     private static final Map<String, OperationType> ENUM_OPERATION;
     private static final String OPERATORS;
 
@@ -28,7 +27,6 @@ public enum OperationType {
         for (OperationType instance : OperationType.values()) {
             map.put(instance.operand, instance);
             operators.append(instance.operand);
-
         }
         OPERATORS = String.valueOf(operators);
         ENUM_OPERATION = Collections.unmodifiableMap(map);
@@ -37,7 +35,6 @@ public enum OperationType {
     private final String operand;
     private final int priority;
     private final BiFunction<Double, Double, Double> function;
-
 
     OperationType(String operand, int priority, BiFunction<Double, Double, Double> function) {
         this.operand = operand;
