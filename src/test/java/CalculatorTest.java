@@ -65,10 +65,10 @@ public class CalculatorTest {
 
     @Test
     public void testCalculator() {
-        assertTrue(calculator.calculate("22+2*2/2+2") == 26.0);
-        assertTrue(calculator.calculate("23434*213+231") == 4991673.0);
-        assertTrue(calculator.calculate("12+5+4-4*5-1") == 0.0);
-        assertTrue(calculator.calculate("232*2+2-4-3+7") == 466.0);
+        assertEquals(26.0, calculator.calculate("22+2*2/2+2"), 0.0);
+        assertEquals(4991673.0, calculator.calculate("23434*213+231"), 0.0);
+        assertEquals(0.0, calculator.calculate("12+5+4-4*5-1"), 0.0);
+        assertEquals(466.0, calculator.calculate("232*2+2-4-3+7"), 0.0);
     }
 
     @Test

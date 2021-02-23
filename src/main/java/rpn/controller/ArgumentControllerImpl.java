@@ -16,7 +16,7 @@ public class ArgumentControllerImpl implements IArgumentController {
 
     private boolean isLetter(String input) {
         if (input.chars().anyMatch(Character::isLetter)) {
-            System.out.println(String.format("Expression cannot be composed of characters [%s]", input));
+            System.out.printf("Expression cannot be composed of characters [%s]%n", input);
             return false;
         }
         return true;
@@ -24,7 +24,7 @@ public class ArgumentControllerImpl implements IArgumentController {
 
     private boolean isWhitespace(String input) {
         if (input.chars().anyMatch(Character::isWhitespace)) {
-            System.out.println(String.format("Expressions cannot contain empty spaces [%s]", input));
+            System.out.printf("Expressions cannot contain empty spaces [%s]%n", input);
             return false;
         }
         return true;
@@ -35,7 +35,7 @@ public class ArgumentControllerImpl implements IArgumentController {
         for (int i = 0; i < operands.length(); i++) {
             final String expectedOperand = String.valueOf(operands.charAt(i));
             if (!OperationType.IsOperator(expectedOperand)) {
-                System.out.println(String.format("The operand you entered does not exist [%s]", expectedOperand));
+                System.out.printf("The operand you entered does not exist [%s]%n", expectedOperand);
                 return false;
             }
         }

@@ -8,6 +8,7 @@ import java.util.function.BiFunction;
 
 public enum OperationType {
 
+
     ADDITION("+", 1, Double::sum),
     SUBTRACTION("-", 1, (a, b) -> a - b),
     MULTIPLICATION("*", 2, (a, b) -> a * b),
@@ -20,6 +21,10 @@ public enum OperationType {
 
     private static final Map<String, OperationType> ENUM_OPERATION;
 
+    private final String operand;
+    private final int priority;
+    private final BiFunction<Double, Double, Double> function;
+
     static {
         Map<String, OperationType> map = new ConcurrentHashMap<>();
         for (OperationType instance : OperationType.values()) {
@@ -28,9 +33,6 @@ public enum OperationType {
         ENUM_OPERATION = Collections.unmodifiableMap(map);
     }
 
-    private final String operand;
-    private final int priority;
-    private final BiFunction<Double, Double, Double> function;
 
     OperationType(String operand, int priority, BiFunction<Double, Double, Double> function) {
         this.operand = operand;

@@ -8,22 +8,23 @@ public class PostfixConverter implements Converter {
     @Override
     public String convertToPostfix(String input) {
         StringBuilder copyInput = new StringBuilder();
-        Stack<String> operStack = new Stack<>();
+        Stack<String> operationStack = new Stack<>();
         for (int i = 0; i < input.length(); i++) {
             if (!OperationType.IsOperator(String.valueOf(input.charAt(i)))) {
                 copyInput.append(input.charAt(i));
             } else {
                 copyInput.append(" ");
-                if (operStack.size() > 0) {
-                    while (!operStack.isEmpty() && OperationType.getPriority(String.valueOf(input.charAt(i))) <= OperationType.getPriority(operStack.peek())) {
-                        copyInput.append(operStack.pop() + " ");
+                if (operationStack.size() > 0) {
+                    while (!operationStack.isEmpty() && OperationType.getPriority(String.valueOf(input.charAt(i)))
+                            <= OperationType.getPriority(operationStack.peek())) {
+                        copyInput.append(operationStack.pop()).append(" ");
                     }
                 }
-                operStack.push(String.valueOf(input.charAt(i)));
+                operationStack.push(String.valueOf(input.charAt(i)));
             }
         }
-        while (!operStack.isEmpty())
-            copyInput.append(" " + operStack.pop());
+        while (!operationStack.isEmpty())
+            copyInput.append(" ").append(operationStack.pop());
         return copyInput.toString();
     }
 }

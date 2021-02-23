@@ -31,7 +31,7 @@ public class CalculatorApplication {
             }
             try {
                 double result = calculator.calculate(input);
-                System.out.println(String.format("%.2f\n", result));
+                System.out.printf("%.2f\n%n", result);
 
             } catch (ArithmeticException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
