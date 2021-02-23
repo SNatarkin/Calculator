@@ -13,12 +13,10 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class EvaluationTest {
 
-
     @Mock
-    IArgumentController mockController = new ArgumentControllerImpl();
-
+    IArgumentController mockController;
     @Mock
-    Converter mockConverter = new PostfixConverter();
+    Converter mockConverter;
 
     @Test
     public void testExpressionEvaluationCheckWithMockController() {
@@ -35,22 +33,22 @@ public class EvaluationTest {
         assertTrue(calculator.calculate("23434*213+231") == 4991673.0);
         assertTrue(calculator.calculate("12+5+4-4*5-1") == 0.0);
         assertTrue(calculator.calculate("232*2+2-4-3+7") == 466.0);
-
     }
+
     @Test
     public void testExpressionEvaluationCheckWithMockConverter() {
-
-        IArgumentController controller  = new ArgumentControllerImpl();
+        IArgumentController controller = new ArgumentControllerImpl();
         ICalculator calculator = new EvaluationCalculator(controller, mockConverter);
         when(mockConverter.convertToPostfix("1+1")).thenReturn("1 1 +");
-        assertTrue(calculator.calculate("1+1") ==2);
+        assertTrue(calculator.calculate("1+1") == 2);
         when(mockConverter.convertToPostfix("3+3*3")).thenReturn("3 3 3 * +");
-        assertTrue(calculator.calculate("3+3*3") ==12);
+        assertTrue(calculator.calculate("3+3*3") == 12);
         when(mockConverter.convertToPostfix("5/10+4-3*4")).thenReturn("5 10 / 4 + 3 4 * -");
-        assertEquals(-7.5 ,calculator.calculate("5/10+4-3*4") ,0.00001);
+        assertEquals(-7.5, calculator.calculate("5/10+4-3*4"), 0.00001);
         when(mockConverter.convertToPostfix("2.1+1.9-3*2-4+5*10-35")).thenReturn("2.1 1.9 + 3 2 * - 4 - 5 10 * + 35 -");
         assertTrue(calculator.calculate("2.1+1.9-3*2-4+5*10-35") == 9);
     }
+
     @Test
     public void testExpressionEvaluationCheckWithAllConstructorMock() {
         ICalculator calculator = new EvaluationCalculator(mockController, mockConverter);
@@ -58,11 +56,8 @@ public class EvaluationTest {
         when(mockConverter.convertToPostfix("1+1")).thenReturn("1 1 +");
         assertEquals(2, calculator.calculate("1+1"), 0.00001);
         when(mockConverter.convertToPostfix("5/10+4-3*4")).thenReturn("5 10 / 4 + 3 4 * -");
-        assertEquals(-7.5 ,calculator.calculate("5/10+4-3*4") ,0.00001);
-
+        assertEquals(-7.5, calculator.calculate("5/10+4-3*4"), 0.00001);
     }
-
-
 }
 
 
