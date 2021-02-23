@@ -18,16 +18,12 @@ public class PostfixConverter implements Converter {
                     }
                 }
                 operStack.push(String.valueOf(input.charAt(i)));
-
             }
         }
         while (!operStack.isEmpty())
             copyInput.append(" " + operStack.pop());
         return copyInput.toString();
-
-
     }
-
 }
 
 
