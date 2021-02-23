@@ -12,11 +12,6 @@ public class EvaluationCalculator implements ICalculator {
     private final IArgumentController argumentController;
     private final Converter converter;
 
-    public EvaluationCalculator() {
-        this.argumentController = new ArgumentControllerImpl();
-        this.converter = new PostfixConverter();
-    }
-
     @Override
     public double calculate(String input) throws IllegalArgumentException , ArithmeticException{
         if (argumentController.check(input)) {
@@ -24,9 +19,9 @@ public class EvaluationCalculator implements ICalculator {
         } else throw new IllegalArgumentException("The expression cannot be counted");
     }
 
-    private double counting(String input) {
+    private double counting(String postfixExpression) {
         Stack<Double> temp = new Stack<>();
-        final List<String> expression = Arrays.asList(input.split(" "));
+        final List<String> expression = Arrays.asList(postfixExpression.split(" "));
         expression.forEach(symbol -> {
             if (!isNumeric(symbol) & !OperationType.IsOperator(symbol)) {
                 throw new IllegalArgumentException(String.format("Lists cannot contain spaces or other characters [%s]", symbol));
@@ -42,7 +37,7 @@ public class EvaluationCalculator implements ICalculator {
         return temp.peek();
     }
 
-    public static boolean isNumeric(String str) {
+    private boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
             return true;
