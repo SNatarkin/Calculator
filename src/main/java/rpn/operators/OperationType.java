@@ -19,16 +19,12 @@ public enum OperationType {
     });
 
     private static final Map<String, OperationType> ENUM_OPERATION;
-    private static final String OPERATORS;
-
+    
     static {
         Map<String, OperationType> map = new ConcurrentHashMap<>();
-        StringBuffer operators = new StringBuffer();
         for (OperationType instance : OperationType.values()) {
             map.put(instance.operand, instance);
-            operators.append(instance.operand);
         }
-        OPERATORS = String.valueOf(operators);
         ENUM_OPERATION = Collections.unmodifiableMap(map);
     }
 
@@ -52,10 +48,6 @@ public enum OperationType {
 
     public static boolean IsOperator(String operand) {
         return ENUM_OPERATION.containsKey(operand);
-    }
-
-    public static String getOperators() {
-        return OPERATORS;
     }
 
     public BiFunction<Double, Double, Double> getFunction() {
