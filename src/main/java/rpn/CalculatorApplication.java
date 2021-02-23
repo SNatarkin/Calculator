@@ -1,10 +1,17 @@
 package rpn;
 
+import lombok.RequiredArgsConstructor;
+
 import java.util.Scanner;
 
+@RequiredArgsConstructor
 public class CalculatorApplication {
 
-    private final ICalculator calculator = RpnFactory.getDefaultCalculator();
+    private final ICalculator calculator;
+
+    public CalculatorApplication() {
+        this.calculator = RpnFactory.getDefaultCalculator();
+    }
 
     public static void main(String[] args) {
         new CalculatorApplication().run();
