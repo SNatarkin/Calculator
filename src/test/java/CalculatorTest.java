@@ -8,7 +8,6 @@ public class CalculatorTest {
     private final IArgumentController checkInput = new ArgumentControllerImpl();
     private final ICalculator calculator = new EvaluationCalculator(new ArgumentControllerImpl(), new PostfixConverter());
 
-
     @Test
     public void checkInfixToPostfix() {
         Converter converter = new PostfixConverter();
@@ -67,17 +66,13 @@ public class CalculatorTest {
         assertTrue(calculator.calculate("232*2+2-4-3+7") == 466.0);
     }
 
-
     @Test
     public void testCalculatorFractional() {
         assertEquals(12.75, calculator.calculate("2*2+21/2*5/6"), 0.00001);
         assertEquals(28.74, calculator.calculate("3.3*7.1+5.31"), 0.00001);
         assertEquals(23.1375, calculator.calculate("5.5*3.9+5.4/3.2"), 0.00001);
         assertEquals(16.9, calculator.calculate("5-9.1+10.5*8.2/4.1"), 0.00001);
-
     }
-
-
 }
 
 
