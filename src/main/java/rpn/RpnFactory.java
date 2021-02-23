@@ -1,4 +1,4 @@
-package RPN;
+package rpn;
 
 public class RpnFactory {
 
