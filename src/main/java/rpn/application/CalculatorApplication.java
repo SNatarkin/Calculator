@@ -1,4 +1,4 @@
-package rpn.api;
+package rpn.application;
 
 import lombok.RequiredArgsConstructor;
 import rpn.calculator.ICalculator;
