@@ -1,4 +1,6 @@
-package rpn;
+package rpn.controller;
+
+import rpn.operators.OperationType;
 
 import java.util.ArrayList;
 import java.util.List;

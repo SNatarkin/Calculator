@@ -1,4 +1,6 @@
-package rpn;
+package rpn.converter;
+
+import rpn.operators.OperationType;
 
 import java.util.Stack;
 

@@ -1,4 +1,4 @@
-package rpn;
+package rpn.calculator;
 
 public interface ICalculator {
 

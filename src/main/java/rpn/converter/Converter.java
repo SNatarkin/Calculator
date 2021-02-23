@@ -1,4 +1,4 @@
-package rpn;
+package rpn.converter;
 
 public interface Converter {
 

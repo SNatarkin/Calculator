@@ -1,4 +1,4 @@
-package rpn;
+package rpn.controller;
 
 public interface IArgumentController {
 

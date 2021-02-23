@@ -1,8 +1,13 @@
-import rpn.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import rpn.calculator.EvaluationCalculator;
+import rpn.calculator.ICalculator;
+import rpn.controller.ArgumentControllerImpl;
+import rpn.controller.IArgumentController;
+import rpn.converter.Converter;
+import rpn.converter.PostfixConverter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
