@@ -1,11 +1,11 @@
 package RPN;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ArgumentControllerImpl implements IArgumentController {
-
-
 
     @Override
     public boolean check(String input) {
@@ -37,7 +37,7 @@ public class ArgumentControllerImpl implements IArgumentController {
                 return false;
             }
         }
-        if (getNumbers(input).length - operands.length() != 1) {
+        if (countNumbers(input) - operands.length() != 1) {
             System.out.println("The number of operands cannot be equal to or greater than the number of digits");
             return false;
         }
@@ -52,13 +52,15 @@ public class ArgumentControllerImpl implements IArgumentController {
         return true;
     }
 
-    private String[] getNumbers(String input) {
-        Object[] arrayInput = Arrays.stream(input.trim().split("[" + Pattern.quote(OperationType.getOperators()) + "]")).
-                filter(s -> !s.equals("")).
-                map(String::trim).toArray();
-        return Arrays.copyOf(arrayInput, arrayInput.length, String[].class);
+    private int countNumbers(String input) {
+        Pattern p = Pattern.compile("\\d+(\\.\\d*)?");
+        Matcher m = p.matcher(input);
+        final List<String> numbers = new ArrayList<>();
+        while (m.find()) {
+            numbers.add(m.group());
+        }
+        return numbers.size();
     }
-
 }
 
 
