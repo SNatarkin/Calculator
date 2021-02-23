@@ -1,15 +1,15 @@
 package RPN;
 
-import lombok.RequiredArgsConstructor;
-
 import java.util.Scanner;
-@RequiredArgsConstructor
+
 public class CalculatorApplication {
 
-    private final ICalculator calculator;
-    public CalculatorApplication() {
-        this.calculator = new EvaluationCalculator();
+    private final ICalculator calculator = RpnFactory.getDefaultCalculator();
+
+    public static void main(String[] args) {
+        new CalculatorApplication().run();
     }
+
     void run() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to my expression calculator, if you want to end the program enter: exit");
@@ -21,8 +21,8 @@ public class CalculatorApplication {
                 break;
             }
             try {
-                double  result = calculator.calculate(input);
-                System.out.println(String.format("%.2f\n" , result));
+                double result = calculator.calculate(input);
+                System.out.println(String.format("%.2f\n", result));
 
             } catch (ArithmeticException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
